@@ -1,0 +1,24 @@
+#basic chatbot using NLTK
+import nltk
+from nltk.chat.util import Chat, reflections
+
+# Define chatbot responses
+pairs = [
+    ["hi|hello|hey", ["Hello!", "Hi there!", "Hey!"]],
+    ["how are you?", ["I'm good, thank you!", "I'm doing well, how about you?"]],
+    ["what is your name?", ["I'm a chatbot!", "You can call me ChatBot."]],
+    ["bye|goodbye", ["Goodbye!", "See you later!", "Bye! Have a great day!"]]
+]
+
+# Create chatbot
+chatbot = Chat(pairs, reflections)
+
+# Start chat
+print("Chatbot: Hi! Type 'bye' to exit.")
+while True:
+    user_input = input("You: ").lower()
+    if user_input == "bye":
+        print("Chatbot: Goodbye!")
+        break
+    print("Chatbot:", chatbot.respond(user_input))
+  
