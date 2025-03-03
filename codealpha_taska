@@ -1,4 +1,4 @@
-python_code_for_hangman_game
+#python_code_for_hangman_game
 import random
 
 def choose_word():
