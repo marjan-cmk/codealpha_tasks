@@ -40,16 +40,3 @@ def hangman():
 if __name__ == "__main__":
     hangman()
 
-Key points:- keep in mind while playing. 
-
-The game chooses a secret word from a list of words.
-
-The player guesses one letter at a time.
-
-If the letter is in the word, it is shown in the correct place.
-
-If the letter is not in the word, the player loses one chance.
-
-The player has 6 chances to guess wrong.
-
-The game ends when the player guesses the full word or uses all 6 chances.
