@@ -1,0 +1,94 @@
+import tensorflow as tf
+from tensorflow.keras import layers, models, datasets
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.metrics import classification_report
+
+# Load MNIST dataset
+(x_train, y_train), (x_test, y_test) = datasets.mnist.load_data()
+
+# Normalize and reshape
+x_train = x_train.astype('float32') / 255.0
+x_test = x_test.astype('float32') / 255.0
+x_train = x_train[..., np.newaxis]  # Add channel dimension
+x_test = x_test[..., np.newaxis]
+
+# Convert labels to categorical
+y_train = tf.keras.utils.to_categorical(y_train, 10)
+y_test = tf.keras.utils.to_categorical(y_test, 10)
+
+print(f"Training data shape: {x_train.shape}")
+print(f"Test data shape: {x_test.shape}")
+
+# Build CNN model
+def create_cnn_model(input_shape=(28, 28, 1), num_classes=10):
+    model = models.Sequential([
+        layers.Conv2D(32, (3, 3), activation='relu', input_shape=input_shape),
+        layers.MaxPooling2D((2, 2)),
+        layers.Conv2D(64, (3, 3), activation='relu'),
+        layers.MaxPooling2D((2, 2)),
+        layers.Conv2D(64, (3, 3), activation='relu'),
+        layers.Flatten(),
+        layers.Dense(64, activation='relu'),
+        layers.Dropout(0.5),
+        layers.Dense(num_classes, activation='softmax')
+    ])
+    return model
+
+model = create_cnn_model()
+model.compile(optimizer='adam', 
+              loss='categorical_crossentropy', 
+              metrics=['accuracy'])
+
+model.summary()
+
+# Train
+history = model.fit(x_train, y_train, 
+                    epochs=10, 
+                    batch_size=128,
+                    validation_split=0.1,
+                    verbose=1)
+
+# Evaluate
+test_loss, test_acc = model.evaluate(x_test, y_test, verbose=0)
+print(f"\nTest Accuracy: {test_acc:.4f}")
+
+# Predict and visualize
+predictions = model.predict(x_test[:10])
+
+fig, axes = plt.subplots(2, 5, figsize=(12, 6))
+for i, ax in enumerate(axes.flat):
+    ax.imshow(x_test[i].reshape(28, 28), cmap='gray')
+    predicted = np.argmax(predictions[i])
+    actual = np.argmax(y_test[i])
+    ax.set_title(f'Pred: {predicted}\nActual: {actual}')
+    ax.axis('off')
+plt.tight_layout()
+plt.show()
+
+# Extended: EMNIST for characters (letters)
+# Uncomment to use EMNIST (requires downloading)
+# emnist_train, emnist_test = datasets.emnist.load_data(type='letters')
+# (x_train_letter, y_train_letter), (x_test_letter, y_test_letter) = emnist_train, emnist_test
+
+# CRNN for full word recognition (simplified)
+def create_crnn_model(input_shape=(32, 128, 1), num_classes=37):  # 26 letters + 10 digits + space
+    model = models.Sequential([
+        # CNN layers
+        layers.Conv2D(64, (3, 3), activation='relu', padding='same', input_shape=input_shape),
+        layers.MaxPooling2D((2, 2)),
+        layers.Conv2D(128, (3, 3), activation='relu', padding='same'),
+        layers.MaxPooling2D((2, 2)),
+        
+        # Reshape for RNN
+        layers.Reshape((-1, 128 * 8)),  # Adjust based on input dimensions
+        layers.Bidirectional(layers.LSTM(128, return_sequences=True)),
+        layers.Bidirectional(layers.LSTM(128)),
+        
+        layers.Dense(128, activation='relu'),
+        layers.Dropout(0.3),
+        layers.Dense(num_classes, activation='softmax')
+    ])
+    return model
+
+print("\nCRNN model for word recognition ready (uncomment to train on word dataset)")
