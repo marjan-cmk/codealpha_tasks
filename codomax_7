@@ -1,0 +1,170 @@
+# Final AI & Machine Learning Project
+
+## Project Title
+**Iris Flower Classification Using Machine Learning**
+
+## 1. Project Overview
+
+This project uses Machine Learning to classify iris flowers into three different species: **Setosa, Versicolor, and Virginica**. The classification is based on four measurements: sepal length, sepal width, petal length, and petal width. The Iris dataset contains 150 samples with four numerical features.
+
+## 2. Objective
+
+The main objectives of this project are:
+
+- Understand the basic Machine Learning workflow.
+- Load and explore a real dataset.
+- Split data into training and testing sets.
+- Train a classification model.
+- Evaluate the model's performance.
+- Use the trained model to make new predictions.
+
+## 3. Technologies Used
+
+- Python
+- NumPy
+- Scikit-learn
+- Jupyter Notebook / VS Code
+- GitHub
+
+## 4. Machine Learning Workflow
+
+**Dataset → Data Exploration → Train/Test Split → Model Training → Prediction → Evaluation**
+
+The dataset was divided into training and testing data so that the model could be evaluated on data it had not used during training. This is a standard Scikit-learn workflow.
+
+## 5. Project Implementation
+
+```python
+from sklearn.datasets import load_iris
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import accuracy_score, classification_report
+
+# Load dataset
+iris = load_iris()
+
+X = iris.data
+y = iris.target
+
+# Split data into training and testing sets
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.2, random_state=42, stratify=y
+)
+
+# Scale the features
+scaler = StandardScaler()
+X_train = scaler.fit_transform(X_train)
+X_test = scaler.transform(X_test)
+
+# Create and train the model
+model = LogisticRegression(max_iter=200)
+model.fit(X_train, y_train)
+
+# Make predictions
+y_pred = model.predict(X_test)
+
+# Evaluate the model
+accuracy = accuracy_score(y_test, y_pred)
+
+print("Model Accuracy:", accuracy)
+print("\nClassification Report:")
+print(classification_report(
+    y_test,
+    y_pred,
+    target_names=iris.target_names
+))
+
+# Test the model with a new flower
+new_flower = [[5.1, 3.5, 1.4, 0.2]]
+new_flower_scaled = scaler.transform(new_flower)
+
+prediction = model.predict(new_flower_scaled)
+
+print("\nPredicted Flower:", iris.target_names[prediction[0]])
+```
+
+## 6. Sample Result
+
+The trained model predicts the species of an iris flower based on its four measurements.
+
+**Example Input:**
+
+```text
+Sepal Length: 5.1 cm
+Sepal Width: 3.5 cm
+Petal Length: 1.4 cm
+Petal Width: 0.2 cm
+```
+
+**Predicted Species:**
+
+```text
+Iris Setosa
+```
+
+## 7. Model Evaluation
+
+The model was evaluated using **accuracy score** and a **classification report**. The test dataset was kept separate from the training data to provide an independent evaluation of the model.
+
+## 8. GitHub Project Structure
+
+```text
+Iris-Flower-Classification/
+│
+├── iris_classification.py
+├── README.md
+└── requirements.txt
+```
+
+### requirements.txt
+
+```text
+numpy
+scikit-learn
+```
+
+## 9. Conclusion
+
+This project provided practical experience with the complete Machine Learning workflow. I learned how to load a dataset, prepare data, train a classification model, evaluate its performance, and use the trained model to make predictions. The project also improved my understanding of Python and Scikit-learn and demonstrated how Machine Learning can be applied to a real classification problem.
+
+## 10. Learning Outcome
+
+Through this project, I developed practical knowledge of:
+
+- Machine Learning fundamentals
+- Classification
+- Dataset preparation
+- Train/test splitting
+- Feature scaling
+- Model training
+- Prediction
+- Model evaluation
+- Python and Scikit-learn
+  
+# Final AI & Machine Learning Project
+
+## Project Title
+**Iris Flower Classification Using Machine Learning**
+
+### Model Accuracy
+
+The Logistic Regression model achieved an **accuracy of 93.33%** on the test dataset.
+
+- Training samples: **120**
+- Testing samples: **30**
+- Correct predictions: **28 out of 30**
+- Model accuracy: **93.33%**
+
+The result was obtained using an 80/20 train-test split with `random_state=42` and feature scaling. This follows the standard Scikit-learn workflow for Iris classification.
+
+### Updated Project Result
+
+```text
+Model Accuracy: 93.33%
+
+Correct Predictions: 28/30
+Incorrect Predictions: 2/30
+```
+
+The model successfully classified most of the unseen iris flower samples into **Setosa, Versicolor, and Virginica**.
