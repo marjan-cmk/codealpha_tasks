@@ -1,0 +1,119 @@
+# AI Tools & Mini Project
+
+## 1. AI Tools Explored
+
+I explored AI tools such as **ChatGPT, Google Gemini, and Microsoft Copilot** to understand how artificial intelligence can support coding, research, learning, and daily productivity.
+
+## 2. How AI Tools Help
+
+- **Coding:** Generate code, explain programming concepts, identify errors, and suggest improvements.
+- **Research:** Help find ideas, summarize information, explain technical topics, and organize research work.
+- **Productivity:** Assist with writing, brainstorming, planning, documentation, and solving routine tasks.
+
+AI tools can support coding and research workflows while helping users work more efficiently.
+
+## 3. Mini Project: AI Student Assistant
+
+### Objective
+The objective of this project is to create a simple AI-powered student assistant that can help students with learning-related questions.
+
+### Features
+- Accepts a question from the user.
+- Processes the question using an AI tool.
+- Provides an easy-to-understand response.
+- Can be used for programming, mathematics, engineering, and general learning questions.
+
+### Technologies Used
+- Python
+- Artificial Intelligence
+- ChatGPT
+- Basic Python programming
+
+### Learning Outcome
+
+Through this project, I learned how AI tools can be integrated into programming and used for education, research, coding assistance, and productivity. I also learned that AI-generated results should be reviewed and verified before being used.
+
+## 4. Conclusion
+
+This project helped me understand the practical use of AI tools beyond simple question answering. AI can assist students and developers in coding, research, problem-solving, and productivity while allowing users to focus more on understanding and improving their work.
+# AI Tools & Mini Project
+
+## Project Title
+**AI Student Assistant**
+
+## Project Objective
+The objective of this project is to develop a simple AI-powered student assistant that accepts questions from users and generates useful responses for learning, coding, research, and general academic tasks.
+
+## Tools and Technologies Used
+- Python
+- OpenAI API
+- ChatGPT
+- VS Code
+- Python `openai` library
+
+## Implementation Details
+
+The project was implemented in Python using the OpenAI API. The application follows these steps:
+
+1. The user enters a question through the Python terminal.
+2. The program receives and validates the user input.
+3. The question is sent to the AI model through the OpenAI Responses API.
+4. The AI processes the question and generates a response.
+5. The generated response is displayed to the user.
+6. The process continues until the user enters `exit`.
+
+The OpenAI Responses API is used for new integrations, replacing the older Assistants API.
+
+### Basic Implementation
+
+```python
+from openai import OpenAI
+
+client = OpenAI()
+
+print("AI Student Assistant")
+print("Type 'exit' to close the program.")
+
+while True:
+    question = input("\nEnter your question: ")
+
+    if question.lower() == "exit":
+        print("Thank you for using AI Student Assistant!")
+        break
+
+    response = client.responses.create(
+        model="gpt-6-luna",
+        input=question
+    )
+
+    print("\nAI Response:")
+    print(response.output_text)
+```
+
+## Working Process
+
+**User Question → Python Program → OpenAI API → AI Model → Generated Answer → User**
+
+The API requires an API key, and API usage is charged according to the selected model and token usage.
+
+## Sample Interaction
+
+**User:**
+```text
+Explain what renewable energy is.
+```
+
+**AI Assistant:**
+```text
+Renewable energy is energy obtained from naturally replenishing
+sources such as sunlight, wind, water, and biomass.
+```
+
+## Project Outcome
+
+The project successfully demonstrates how an AI model can be integrated into a Python application to create an interactive student assistant. It provides practical experience with AI APIs, Python programming, user input handling, and AI-generated responses.
+
+## Learning Outcome
+
+Through this project, I learned how AI tools can be integrated into software applications and how they can support coding, research, learning, and productivity. I also learned the importance of reviewing AI-generated information before using it.
+  
