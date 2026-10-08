@@ -1,0 +1,23 @@
+1. Load dataset
+Use Scikit-learn's built-in Iris dataset.
+2. Explore the data
+Understand the features and target/classes.
+3. Split the data
+Divide it into training and testing sets.
+4. Train a model
+Use a beginner-friendly model such as KNeighborsClassifier or LogisticRegression.
+5. Test the model
+Check how accurately it predicts unseen data.
+6. Make predictions
+Give the model flower measurements and see what species it predicts.
+7. Understand the results
+Explain accuracy and a few sample predictions.
+What your final project can look like
+iris-ml-classification/
+│
+├── iris_classification.py
+├── README.md
+└── requirements.txt
+
+And your code will use:
+from sklearn.datasets import load_irisfrom sklearn.model_selection import train_test_splitfrom sklearn.neighbors import KNeighborsClassifierfrom sklearn.metrics import accuracy_score
