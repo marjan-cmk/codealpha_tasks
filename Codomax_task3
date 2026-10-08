@@ -1,0 +1,47 @@
+Pandas & NumPy
+Learn:
+import pandas as pd
+import numpy as np
+Then load a CSV:
+df = pd.read_csv("students.csv")
+print(df.head())
+print(df.shape)
+print(df.columns)
+print(df.info())
+#Data Cleaning & Analysis
+print(df.isnull().sum())
+Remove missing values:
+df = df.dropna()
+
+
+Calculate averages:
+print("Average Math:", df["Math"].mean())print("Average Physics:", df["Physics"].mean())
+
+
+Find the highest marks:
+print(df["Math"].max())
+
+
+You can also use NumPy:
+average = np.mean(df["Math"])print(average)
+Visualization with Matplotlib
+Learn the three required chart types.
+Bar chart
+import matplotlib.pyplot as pltplt.bar(df["Name"], df["Math"])plt.xlabel("Student")plt.ylabel("Math Marks")plt.title("Math Marks by Student")plt.show()
+
+
+Line chart
+plt.plot(df["Name"], df["Math"], marker="o")plt.xlabel("Student")plt.ylabel("Marks")plt.title("Student Math Performance")plt.show()
+
+
+Pie chart
+plt.pie(    df["Math"],    labels=df["Name"],    autopct="%1.1f%%")plt.title("Math Marks Distribution")plt.show()
+student-data-analysis/
+│
+├── students.csv
+├── data_analysis.py
+├── README.md
+└── charts/
+    ├── bar_chart.png
+    ├── line_chart.png
+    └── pie_chart.png
