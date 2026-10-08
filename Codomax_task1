@@ -1,0 +1,70 @@
+Artificial Intelligence (AI): The broad science of mimicking human intelligence and problem-solving capabilities in machines so they can perform tasks autonomously or semi-autonomously.
+​Machine Learning (ML): A subset of AI focused on building applications that learn from data and improve their accuracy over time without being explicitly programmed for every scenario.
+​Deep Learning (DL): A specialized subset of ML powered by multi-layered artificial neural networks (hence "deep") designed to process vast amounts of complex, unstructured data like images, audio, and text.[ Artificial Intelligence (AI) ]
+ └── [ Machine Learning (ML) ]
+      └── [ Deep Learning (DL) ]
+Real-World Applications
+​AI Applications:
+​GPS Navigation (e.g., Google Maps): Predicts traffic patterns and calculates the fastest real-time routes.
+​Virtual Assistants (e.g., Siri, Alexa): Interprets natural language commands to set reminders or play music.
+​ML Applications:
+​Email Spam Filters: Analyzes incoming emails to automatically classify and filter out spam based on historical data patterns.
+​Recommendation Engines (e.g., Netflix, Spotify): Predicts user preferences to recommend movies or music based on past viewing/listening habits.
+​DL Applications:
+​Facial Recognition: Used in smartphones and security systems to identify faces from high-resolution images or video feeds.
+​Real-Time Language Translation: Neural machine translation tools that convert speech or text dynamically across multiple languages with high contextual accuracy.
+​Part 2: Python Environment Setup Verification
+​To prove your environment is operational, you can run this quick verification script in your terminal, VS Code, or Jupyter Notebook:import sys
+
+print("Python Environment Successfully Configured!")
+print(f"Python Version: {sys.version.split()[0]}")
+print("Ready to code!")
+Part 3: Beginner Python Script Portfolio
+​Save the code below as a .py file (e.g., assignment1.py) or run it cell-by-cell in a Jupyter Notebook. It covers variables, control flow, loops, lists, and custom functions.# ==========================================
+# MODULE 1: BEGINNER PYTHON SCRIPT PORTFOLIO
+# ==========================================
+
+# 1. Variables and Data Types
+student_name = "Alex"      # String
+age = 22                   # Integer
+gpa = 3.65                 # Float
+is_enrolled = True         # Boolean
+
+print(f"Student: {student_name}, Age: {age}, GPA: {gpa}, Enrolled: {is_enrolled}\n")
+
+
+# 2. Control Flow & Loops
+print("--- Number Classifier Loop ---")
+# Using a loop and conditional statements to check numbers from 1 to 5
+for number in range(1, 6):
+    if number % 2 == 0:
+        print(f"{number} is Even")
+    else:
+        print(f"{number} is Odd")
+print()
+
+
+# 3. Lists and Custom Functions
+print("--- List Processing Function ---")
+
+# Define a sample list of scores
+test_scores = [78, 85, 92, 64, 90, 88]
+
+def analyze_scores(scores_list):
+    """
+    Takes a list of numeric scores and returns the 
+    highest score, lowest score, and the average score.
+    """
+    highest = max(scores_list)
+    lowest = min(scores_list)
+    average = sum(scores_list) / len(scores_list)
+    
+    return highest, lowest, round(average, 2)
+
+# Call the function and unpack results
+high, low, avg = analyze_scores(test_scores)
+
+print(f"Scores Analyzed: {test_scores}")
+print(f"Highest Score: {high}")
+print(f"Lowest Score:  {low}")
+print(f"Average Score: {avg}")
