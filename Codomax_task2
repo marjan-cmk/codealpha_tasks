@@ -1,0 +1,19 @@
+# Student Grade Calculator
+
+A beginner-friendly Python project that calculates a student's
+total marks, percentage, and grade.
+
+## Features
+- Takes student name and marks
+- Calculates total marks
+- Calculates percentage
+- Assigns grade based on percentage
+
+## Technologies
+- Python
+
+## How to Run
+
+Run the following command:
+
+python grade_calculator.py
