@@ -1,0 +1,30 @@
+Step 1 — Load the dataset
+from sklearn.datasets import load_irisiris = load_iris()X = iris.datay = iris.target
+
+
+Step 2 — Split into training and testing data
+from sklearn.model_selection import train_test_splitX_train, X_test, y_train, y_test = train_test_split(    X, y, test_size=0.2, random_state=42)
+
+
+Step 3 — Train your first ML model
+from sklearn.neighbors import KNeighborsClassifiermodel = KNeighborsClassifier(n_neighbors=3)model.fit(X_train, y_train)
+
+
+Step 4 — Make predictions
+y_pred = model.predict(X_test)print(y_pred)
+
+
+Step 5 — Check accuracy
+from sklearn.metrics import accuracy_scoreaccuracy = accuracy_score(y_test, y_pred)print("Model Accuracy:", accuracy)
+
+
+Step 6 — Test a new flower
+prediction = model.predict([[5.1, 3.5, 1.4, 0.2]])print("Predicted flower:", iris.target_names[prediction][0])
+
+
+my final project
+Create:
+iris-ml-classification/
+│
+├── iris_classification.py
+└── README.md
